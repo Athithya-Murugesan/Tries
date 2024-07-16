@@ -30,8 +30,20 @@ class Node {
     }
 }
 
-class Tries{
+class Main{
     static Node root = new Node();
+
+    static int startswith(String key) {
+        Node temp = root;
+        for (int i = 0; i < key.length(); i++) {
+            char ch = key.charAt(i);
+            if (!temp.containskey(ch)) {
+                return 0;
+            }
+            temp = temp.get(ch);
+        }
+        return (temp != null && true )?1:0;
+    }
 
     static int search(String key) {
         Node temp = root;
@@ -65,6 +77,9 @@ class Tries{
             insert(sc.next());
         }
         String s = sc.next();
-        System.out.print(search(s));
+        System.out.println(search(s));
+
+        String x=sc.next();
+        System.out.println(startswith(x));
     }
 }
